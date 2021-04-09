@@ -31,6 +31,14 @@ steps:
     publishWebProjects: True
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
 
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.SourcesDirectory)/ProjectWithMigrations/Migrations/scripts'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/DBScripts.zip'
+    replaceExistingArchive: true
+
 - task: PublishBuildArtifacts@1
   displayName: Publish Artifacts
   inputs:
