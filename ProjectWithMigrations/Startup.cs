@@ -52,7 +52,7 @@ namespace ProjectWithMigrations
 
             app.UseAuthorization();
 
-            app.UseAutoMigrateDatabase();
+            //app.UseAutoMigrateDatabase();
 
             app.UseAutoSeed();
 

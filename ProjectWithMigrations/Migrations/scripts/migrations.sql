@@ -50,3 +50,22 @@ GO
 COMMIT;
 GO
 
+BEGIN TRANSACTION;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210409084736_QuantityColumn')
+BEGIN
+    ALTER TABLE [Products] ADD [Quantity] int NOT NULL DEFAULT 0;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210409084736_QuantityColumn')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20210409084736_QuantityColumn', N'5.0.4');
+END;
+GO
+
+COMMIT;
+GO
+
