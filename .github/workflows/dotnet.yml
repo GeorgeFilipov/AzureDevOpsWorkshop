@@ -18,17 +18,24 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+        
     - name: Restore dependencies
       run: dotnet restore
 
     - name: Build
-      run: dotnet build --no-restore --configuration ${{env.BUILD_CONFIGURATION}} --output ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+      run: dotnet build --no-restore --configuration ${{env.BUILD_CONFIGURATION}}
+      
     - name: Test
       run: dotnet test --no-build --verbosity normal
+      
+    - name: dotnet publish
+      run: dotnet publish -c Release -o ${{ env.AZURE_WEBAPP_PACKAGE_PATH }} 
+      
     - name: 'Deploy to Azure WebApp'
       uses: azure/webapps-deploy@v2
       with:
