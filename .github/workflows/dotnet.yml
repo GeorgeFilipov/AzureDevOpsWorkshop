@@ -8,7 +8,7 @@ on:
     branches: [ master ]
 
 env:
-  AZURE_WEBAPP_NAME: ProjectWithMigrations    # set this to your application's name
+  AZURE_WEBAPP_NAME: Test1111111111111111    # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: './dotnetcorewebapp'      # set this to the path to your web app project, defaults to the repository root
   BUILD_CONFIGURATION: 'Release'
   
