@@ -1,6 +1,7 @@
 name: .NET
 
 on:
+  workflow_dispatch:
   push:
     branches: [ master ]
   pull_request:
@@ -38,6 +39,7 @@ jobs:
   
   deploy:
     runs-on: ubuntu-latest
+    
     steps:
     - name: 'Deploy to Azure WebApp'
       uses: azure/webapps-deploy@v2
